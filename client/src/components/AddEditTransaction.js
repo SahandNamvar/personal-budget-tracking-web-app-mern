@@ -11,8 +11,9 @@ function AddEditTransaction( {showAddEditTransactionModal, setShowAddEditTransac
         //console.log('Received values:', values);
         try {
           setLoading(true);
-          const user = JSON.parse(localStorage.getItem('personal-budget-app-user'))
-          const user_id = user._id;
+          // const user = JSON.parse(localStorage.getItem('personal-budget-app-user'))
+          // const user_id = user._id;
+          const user_id = JSON.parse(localStorage.getItem('personal-budget-app-user')).id;
 
           if (selectedItemForEdit) {
               const doc_id = selectedItemForEdit._id;

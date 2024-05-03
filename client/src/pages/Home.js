@@ -22,10 +22,15 @@ function Home() {
   const getTransactions = async () => {
     try {
       setLoading(true);
-      const user = JSON.parse(localStorage.getItem('personal-budget-app-user'));
+      // const user = JSON.parse(localStorage.getItem('personal-budget-app-user'));
+      // const response = await axios.post(
+      //   '/api/transactions/get-all-transactions',
+      //    { user_id: user._id, frequency, type });
+
+      const user_id = JSON.parse(localStorage.getItem('personal-budget-app-user')).id;
       const response = await axios.post(
         '/api/transactions/get-all-transactions',
-         { user_id: user._id, frequency, type });
+          { user_id, frequency, type });
       
       
       

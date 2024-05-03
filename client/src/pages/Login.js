@@ -15,10 +15,12 @@ function Login() {
             setLoading(true);
             const { email, password } = values;
             const response = await axios.post('/api/users/login', { email, password });
+            // console.log('response.data', response.data);
             if (response.status === 200) {
                 setLoading(false);
                 message.success('Login Successful!');
-                localStorage.setItem('personal-budget-app-user', JSON.stringify({...response.data, password: null}))
+                // localStorage.setItem('personal-budget-app-user', JSON.stringify({...response.data, password: null}))
+                localStorage.setItem('personal-budget-app-user', JSON.stringify(response.data))
                 navigate("/")
             } else {
                 setLoading(false);
@@ -26,7 +28,7 @@ function Login() {
             }
         } catch (error) {
             setLoading(false);
-            message.error('Something went wrong!');
+            message.error(error.response.data);
             console.log(error);
         }
     }

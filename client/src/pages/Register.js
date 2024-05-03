@@ -15,18 +15,13 @@ function Register() {
             setLoading(true);
             const { name, email, password } = values;
             const response = await axios.post('/api/users/register', { name, email, password });
-            if (response.status === 201) {
-                setLoading(false);
-                message.success('Registration Successful! Please login.');
-                navigate("/login")
-            } else {
-                setLoading(false);
-                message.error('Registration failed!');
-            }
+            setLoading(false);
+            message.success(response.data);
+            navigate("/login");
         } catch (error) {
             setLoading(false);
-            message.error('Something went wrong!');
-            console.log(error);
+            message.error(error.response.data);
+            console.log('error:', error);
         }
     }
 
