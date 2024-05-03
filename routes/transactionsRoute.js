@@ -7,30 +7,69 @@ const router = express.Router();
 router.post('/add-transaction', async function(request, response) {
     try {
         const { amount, type, category, date, description, user_id } = request.body;
+
+        if (!amount || !type || !category || !date || !description || !user_id) {
+            return response.status(400).send('Missing fields!');
+        }
+
+        if (isNaN(amount)) {
+            return response.status(400).send('Amount must be a number!');
+        }
+
+        if (amount <= 0) {
+            return response.status(400).send('Amount must be greater than 0!');
+        }
+
         const transaction = new Transaction({ amount, type, category, date, description, user_id });
         await transaction.save();
-        response.status(201).send('Transaction added');
+        response.status(201).send('Transaction added successfully!');
     } catch (error) {
         response.status(500).json(error);
+        console.log('Add-Transaction API Error:', error);
     }
 });
 
 router.post('/edit-transaction', async function(request, response) {
     try {
         const { amount, type, category, date, description, user_id } = request.body;
+
+        if (!amount || !type || !category || !date || !description || !user_id) {
+            return response.status(400).send('Missing fields!');
+        }
+
+        if (isNaN(amount)) {
+            return response.status(400).send('Amount must be a number!');
+        }
+
+        if (amount <= 0) {
+            return response.status(400).send('Amount must be greater than 0!');
+        }
+
         const transaction = await Transaction.findOneAndUpdate({ _id: request.body._id }, { amount, type, category, date, description, user_id });
-        response.status(200).send('Transaction updated');
+
+        if (!transaction) {
+            return response.status(400).send('Transaction does not exist!');
+        }
+
+        response.status(200).send('Transaction updated successfully!');
     } catch (error) {
         response.status(500).json(error);
+        console.log('Edit-Transaction API Error:', error);
     }
 });
 
 router.post('/delete-transaction', async function(request, response) {
     try {
         const transaction = await Transaction.findOneAndDelete({ _id: request.body._id });
-        response.status(200).send('Transaction deleted');
+
+        if (!transaction) {
+            return response.status(400).send('Transaction does not exist!');
+        }
+
+        response.status(200).send('Transaction deleted successfully!');
     } catch (error) {
         response.status(500).json(error);
+        console.log('Delete-Transaction API Error:', error);
     }
 });
 
@@ -60,6 +99,7 @@ router.post('/get-all-transactions', async function(request, response) {
         response.status(200).send(transactions);
     } catch (error) {
         response.status(500).json(error);
+        console.log('Get-All-Transactions API Error:', error);
     }
 });
 

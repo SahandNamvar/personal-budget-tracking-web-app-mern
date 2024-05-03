@@ -34,6 +34,7 @@ router.post('/login', async function(request, response) {
         // response.status(200).send(user);
     } catch (error) {
         response.status(500).json(error);
+        console.log('Login API Error:', error);
     }
 });
 
@@ -70,7 +71,7 @@ router.post('/register', async function(request, response) {
 
     } catch (error) {
         response.status(500).json(error);
-        console.log('error:', error);
+        console.log('Register API Error:', error);
     }
 });
 
