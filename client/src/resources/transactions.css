@@ -49,6 +49,19 @@
 .ant-form-item-explain-error {
     margin: 5px !important;
     color: #cc0000 !important;
+    font-weight: bold;
+}
+
+.custom-login .ant-form-item-explain-error {
+    margin: 5px !important;
+    color: #e3dc08e3 !important;
+    font-weight: bold;
+}
+
+.custom-register .ant-form-item-explain-error {
+    margin: 5px !important;
+    color: #00c9cc !important;
+    font-weight: bold;
 }
 
 .row-button-delete :hover {

@@ -49,19 +49,19 @@ function Register() {
 
                 {/* Right column - Registration form */}
                 <div className="col-md-4">
-                    <Form layout='vertical' onFinish={onFinish}>
+                    <Form layout='vertical' onFinish={onFinish} className='custom-register'>
 
                         <h1>Create Account</h1>
             
-                        <Form.Item label='Name' name='name' rules={[{ required: true }]}>
+                        <Form.Item label='Name' name='name' rules={[{ required: true, message:'Please enter your name!' }]}>
                             <Input type='text' />
                         </Form.Item>
 
-                        <Form.Item label='Email' name='email' rules={[{ required: true }]}>
+                        <Form.Item label='Email' name='email' rules={[{ required: true, message:'Please enter your email!' }]}>
                             <Input type='email'/>
                         </Form.Item>
 
-                        <Form.Item label='Password' name='password' rules={[{ required: true }]}>
+                        <Form.Item label='Password' name='password' rules={[{ required: true, message:'Please enter your password!' }]}>
                             <Input type='password'/>
                         </Form.Item>
 

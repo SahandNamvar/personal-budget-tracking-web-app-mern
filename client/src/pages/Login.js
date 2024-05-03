@@ -48,15 +48,15 @@ function Login() {
 
                 {/* Left column - Login Form */}
                 <div className="col-md-4">
-                    <Form layout='vertical' onFinish={onFinish}>
+                    <Form layout='vertical' onFinish={onFinish} className='custom-login'>
 
                         <h1>Login</h1>
 
-                        <Form.Item label='Email' name='email' rules={[{ required: true }]}>
+                        <Form.Item label='Email' name='email' rules={[{ required: true, message:'Please enter your email!' }]}>
                             <Input type='email' />
                         </Form.Item>
 
-                        <Form.Item label='Password' name='password' rules={[{ required: true }]}>
+                        <Form.Item label='Password' name='password' rules={[{ required: true, message:'Please enter your password!' }]}>
                             <Input type='password'/>
                         </Form.Item>
 

@@ -51,28 +51,44 @@ function AddEditTransaction( {showAddEditTransactionModal, setShowAddEditTransac
         }
     }
 
+    const cancelShowAddEditTransactionModal = () => {
+        setShowAddEditTransactionModal(false);
+        setSelectedItemForEdit(null);
+    }
+
+    const inputFormNumberValidation = (event) => {
+      if (!/[0-9]/.test(event.key) && 
+        event.key !== 'Backspace' && 
+        event.key !== 'Delete' && 
+        event.key !== 'ArrowLeft' && 
+        event.key !== 'ArrowRight') 
+        {
+          event.preventDefault();
+        }
+    }
+
     return (
         <Modal title={selectedItemForEdit ? 'Edit Transaction' : 'Add Transaction'}
           open={showAddEditTransactionModal} 
-          onCancel={()=>setShowAddEditTransactionModal(false)}
+          onCancel={cancelShowAddEditTransactionModal}
           footer={false}> {/* footer={false} hides the default footer buttons */}
 
           <hr />
           {loading && <Spinner />}
           <Form layout='vertical' className='transaction-form' onFinish={onFinish} initialValues={selectedItemForEdit}>
 
-          <Form.Item label='Amount' name='amount'>
-              <Input placeholder='Transaction Amount' type='text'/>
+          <Form.Item label='Amount' name='amount' rules={[{ required:true, message:'Amount is required!' }]}>
+              <Input placeholder='Transaction Amount' type='text' onKeyDown={inputFormNumberValidation}/>
           </Form.Item>
 
-          <Form.Item label='Type' name='type'>
+          <Form.Item label='Type' name='type' rules={[{ required:true, message:'Type is required!' }]}>
             <Select>
               <Select.Option value='income'>Income</Select.Option>
               <Select.Option value='expense'>Expense</Select.Option>
             </Select>
           </Form.Item>
 
-          <Form.Item label='Category' name='category'>
+          <Form.Item label='Category' name='category' rules={[{ required:true, message:'Category is required!'  }]}>
             <Select>
               <Select.Option value='salary'>Salary</Select.Option>
               <Select.Option value='freelance'>Freelance</Select.Option>
@@ -97,7 +113,7 @@ function AddEditTransaction( {showAddEditTransactionModal, setShowAddEditTransac
             </Select>
           </Form.Item>
 
-          <Form.Item label='Date' name='date'>
+          <Form.Item label='Date' name='date' rules={[{ required:true, message:'Date is required!'  }]}>
               <Input type='date'/>
           </Form.Item>
 
