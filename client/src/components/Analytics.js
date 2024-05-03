@@ -38,8 +38,11 @@ function Analytics({ transactions }) {
 
                         <div className="progress-bars">
 
-                            <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTransactionsPercentage.toFixed(0)}/>
-                            <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTransactionsPercentage.toFixed(0)}/>
+                            {totalIncomeTransactionsPercentage ? <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTransactionsPercentage.toFixed(0)}/> : <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={0}/>}
+                            {totalExpenseTransactionsPercentage ? <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTransactionsPercentage.toFixed(0)}/> : <Progress strokeColor='#ff4d4f' type="circle" percent={0}/>}
+
+                            {/* <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTransactionsPercentage.toFixed(0)}/>
+                            <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTransactionsPercentage.toFixed(0)}/> */}
                             
                         </div>
 
@@ -57,8 +60,16 @@ function Analytics({ transactions }) {
 
                         <div className="progress-bars">
 
-                            <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTurnoverPercentage.toFixed(0)}/>
-                            <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTurnoverPercentage.toFixed(0)}/>
+                            {totalIncomeTurnoverPercentage ? 
+                                <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTurnoverPercentage.toFixed(0)}/> : 
+                                <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={0}/>}
+                            
+                            {totalExpenseTurnoverPercentage ? 
+                                <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTurnoverPercentage.toFixed(0)}/> : 
+                                <Progress strokeColor='#ff4d4f' type="circle" percent={0}/>}
+
+                            {/* <Progress className='mx-5' strokeColor='#7cb305' type="circle" percent={totalIncomeTurnoverPercentage.toFixed(0)}/>
+                            <Progress strokeColor='#ff4d4f' type="circle" percent={totalExpenseTurnoverPercentage.toFixed(0)}/> */}
                             
                         </div>
 
@@ -79,14 +90,14 @@ function Analytics({ transactions }) {
                     <div className="category-analysis">
                         <h4>Income Transactions by Category</h4>
 
-                        {categories.map((category) => {
+                        {categories.map((category, index) => {
                             
                             // Fetch the amount based on the category && type (which is income) 
                             const amount = transactions.filter(transaction => transaction.type === 'income' && transaction.category === category).reduce((acc, transaction) => acc + transaction.amount, 0);
 
                             return (
                             (amount > 0) && // Show categories with non-zero amount
-                            <div className="category-card">
+                            <div className="category-card" key={index}>
                                 <h5>{category}</h5>
                                 <Progress strokeColor='#0958d9' percent={(( amount / totalIncomeTurnover) * 100).toFixed(0)}/>
                             </div>
@@ -103,14 +114,14 @@ function Analytics({ transactions }) {
                     <div className="category-analysis">
                         <h4>Expense Transactions by Category</h4>
 
-                        {categories.map((category) => {
+                        {categories.map((category, index) => {
                             
                             // Fetch the amount based on the category && type (which is income) 
                             const amount = transactions.filter(transaction => transaction.type === 'expense' && transaction.category === category).reduce((acc, transaction) => acc + transaction.amount, 0);
 
                             return (
                             (amount > 0) && // Show categories with non-zero amount
-                            <div className="category-card">
+                            <div className="category-card" key={index}>
                                 <h5>{category}</h5>
                                 <Progress strokeColor='#0958d9' percent={(( amount / totalExpenseTurnover) * 100).toFixed(0)}/>
                             </div>

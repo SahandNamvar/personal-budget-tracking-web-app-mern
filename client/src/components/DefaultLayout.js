@@ -15,10 +15,10 @@ function DefaultLayout(props) { // Receive all pages as props
         {
             key: '1',
             label: (
-                <li onClick={() => {
+                <span onClick={() => {
                     localStorage.removeItem('personal-budget-app-user');
                     navigate('/login');
-                }}>Logout</li>
+                }}>Logout</span>
             )
         }
     ]

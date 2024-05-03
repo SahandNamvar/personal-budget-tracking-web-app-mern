@@ -52,12 +52,12 @@ function Login() {
 
                         <h1>Login</h1>
 
-                        <Form.Item label='Email' name='email'>
-                            <Input placeholder='Enter your email' />
+                        <Form.Item label='Email' name='email' rules={[{ required: true }]}>
+                            <Input type='email' />
                         </Form.Item>
 
-                        <Form.Item label='Password' name='password'>
-                            <Input placeholder='Enter your password' type='password'/>
+                        <Form.Item label='Password' name='password' rules={[{ required: true }]}>
+                            <Input type='password'/>
                         </Form.Item>
 
                         <div className="d-flex justify-content-between align-items-center">

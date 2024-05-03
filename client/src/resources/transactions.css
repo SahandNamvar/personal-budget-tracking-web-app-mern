@@ -46,6 +46,19 @@
     color: gray;
 }
 
+.ant-form-item-explain-error {
+    margin: 5px !important;
+    color: #cc0000 !important;
+}
+
+.row-button-delete :hover {
+    color: #cc0000;
+}
+
+.row-button-edit :hover {
+    color: #29cd00;
+}
+
 @media screen and (max-width: 768px) {
     .filter {
         overflow-x: scroll;
