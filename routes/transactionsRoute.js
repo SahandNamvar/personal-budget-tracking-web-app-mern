@@ -8,7 +8,7 @@ router.post('/add-transaction', async function(request, response) {
     try {
         const { amount, type, category, date, description, user_id } = request.body;
 
-        if (!amount || !type || !category || !date || !description || !user_id) {
+        if (!amount || !type || !category || !date || !user_id) {
             return response.status(400).send('Missing fields!');
         }
 
@@ -33,7 +33,7 @@ router.post('/edit-transaction', async function(request, response) {
     try {
         const { amount, type, category, date, description, user_id } = request.body;
 
-        if (!amount || !type || !category || !date || !description || !user_id) {
+        if (!amount || !type || !category || !date || !user_id) {
             return response.status(400).send('Missing fields!');
         }
 
