@@ -46,7 +46,7 @@ function AddEditTransaction( {showAddEditTransactionModal, setShowAddEditTransac
             }
         } catch (error) {
           setLoading(false);
-          message.error('Something went wrong!');
+          message.error(error.response.data);
           console.log(error);
         }
     }

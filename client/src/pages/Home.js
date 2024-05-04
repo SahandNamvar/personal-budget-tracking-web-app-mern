@@ -64,7 +64,8 @@ function Home() {
       }
     } catch (error) {
       setLoading(false);
-      message.error('Something went wrong!');
+      message.error(error.response.data);
+      console.log(error);
     }
   }
 
@@ -149,7 +150,7 @@ function Home() {
 
           {viewType === 'table' ? (
             <div className="table">
-              <Table columns={columns} dataSource={transactions} rowKey="_id" />
+              <Table pagination={false} columns={columns} dataSource={transactions} rowKey="_id" />
             </div>
           ) : (
 
