@@ -94,4 +94,31 @@ This dbConnect.js file establishes a connection to a MongoDB database using Mong
 This server.js file is the entry point for the backend server built with Express.js. It begins by importing necessary dependencies such as Express, the database connection module (dbConnect), and the path module. It initializes an Express application, parses incoming JSON requests, and defines routes for handling user and transaction data, utilizing separate route modules (usersRoute and transactionsRoute). It then configures the server to listen on a specified port, defaulting to port 3001 if not specified via the PORT environment variable. Additionally, in production mode, it serves the static React frontend from the client/build directory and ensures that all GET requests are directed to the index.html file to enable client-side routing. Finally, it starts the server and listens for incoming connections, logging a message to the console upon successful startup.
 
 ## Screenshots
++ Login Page
 ![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.39.21 PM.png)
+
++ Sign Up Page
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.39.39 PM.png)
+
++ Homepage
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.54.34 PM.png)
+
++ Transaction Frequency Selector
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.55.36 PM.png)
+
++ Transaction Type Selector
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.55.59 PM.png)
+
++ Add New Transaction
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.57.12 PM.png)
+
++ Edit Transaction
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.57.42 PM.png)
+
++ Table View Analytics
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.58.10 PM.png)
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.58.26 PM.png)
+
+
+
+
