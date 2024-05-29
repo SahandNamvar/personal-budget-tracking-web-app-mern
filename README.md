@@ -92,3 +92,6 @@ This dbConnect.js file establishes a connection to a MongoDB database using Mong
 
 #### server.js
 This server.js file is the entry point for the backend server built with Express.js. It begins by importing necessary dependencies such as Express, the database connection module (dbConnect), and the path module. It initializes an Express application, parses incoming JSON requests, and defines routes for handling user and transaction data, utilizing separate route modules (usersRoute and transactionsRoute). It then configures the server to listen on a specified port, defaulting to port 3001 if not specified via the PORT environment variable. Additionally, in production mode, it serves the static React frontend from the client/build directory and ensures that all GET requests are directed to the index.html file to enable client-side routing. Finally, it starts the server and listens for incoming connections, logging a message to the console upon successful startup.
+
+## Screenshots
+![](./imgs/screenshots/Screenshot%202024-05-28%20at%208.39.21 PM.png)
